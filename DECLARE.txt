@@ -1,0 +1,26 @@
+DECLARE
+ V_sname sailors.sname%type;
+ V_age sailors.age%type;
+CURSOR c2 is
+ SELECT sname,age
+ FROM sailors;
+
+BEGIN
+ open c2;
+
+
+
+FOR i In 1..3 LOOP
+ FETCH c2 INTO V_sname,v_age;
+
+
+EXIT WHEN c2%NOTFOUND;
+
+
+
+DBMS_OUTPUT.PUT_LINE(V_sname||''||V_age);
+END LOOP;
+
+CLOSE C2;
+END;
+/
